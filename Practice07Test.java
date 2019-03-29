@@ -1,10 +1,10 @@
 
 public class Practice07Test {
-	
-	
+
+
 	public Practice07Test() {
 	}
-	
+
 	protected boolean emptyInitialTest(List<String> list) {
 		try {
 			if (list.size() == 0) {
@@ -15,11 +15,11 @@ public class Practice07Test {
 			return false;
 		}
 	}
-	
+
 	protected boolean basicStoreRemoveTest(List<String> list) {
 		// Obvious, I think...
 		String sample = "Hello world!";
-		
+
 		try {
 			list.add(sample);
 			if (list.get(0).equals(sample)) {
@@ -33,7 +33,7 @@ public class Practice07Test {
 			return false;
 		}
 	}
-	
+
 	protected boolean storeManyTest(List<String> list) {
 		// Milan Kundera
 		String[] work = {"The Joke", "Life is Elsewhere",
@@ -44,11 +44,11 @@ public class Practice07Test {
 			for (int i = 0; i < work.length; i++) {
 				list.add(i, work[i]);
 			}
-			
+
 			if (list.size() != work.length) {
 				return false;
 			}
-			
+
 			for (int i = work.length-1; i >= 0; i--) {
 				if (! list.remove(i).equals(work[i]))
 					return false;
@@ -58,7 +58,7 @@ public class Practice07Test {
 			return false;
 		}
 	}
-	
+
 	protected boolean increaseCapacityTest(List<String> list) {
 		// https://en.wikipedia.org/wiki/BFI_list_of_the_50_films_you_should_see_by_the_age_of_14
 		String [] movies = {"The Adventures of Robin Hood", "Au revoir les enfants",
@@ -73,9 +73,9 @@ public class Practice07Test {
 				"The Railway Children", "The Red Balloon", "Romeo + Juliet", "The Secret Garden",
 				"Show Me Love", "Singin' in the Rain", "Snow White and the Seven Dwarfs",
 				"Some Like It Hot", "The Spirit of the Beehive", "Spirited Away", "Star Wars",
-				"To Kill a Mockingbird", "Toy Story", "Walkabout", "Whale Rider", 
+				"To Kill a Mockingbird", "Toy Story", "Walkabout", "Whale Rider",
 				"Where Is the Friend's Home?", "Whistle Down the Wind", "The White Balloon",
-				"The Wizard of Oz"};
+		"The Wizard of Oz"};
 		try {
 			for (int i = 0; i < movies.length; i++) {
 				list.add(i, movies[i]);
@@ -89,7 +89,7 @@ public class Practice07Test {
 			return false;
 		}
 	}
-	
+
 	protected long timingTest(List<Integer> list) {
 		long start = System.currentTimeMillis();
 
@@ -102,16 +102,16 @@ public class Practice07Test {
 				}
 			}
 		} catch (Exception e) {
-			// e.printStackTrace();  // Uncomment this line if you see errors in timing test.
+			//			e.printStackTrace();  // Uncomment this line if you see errors in timing test.
 			return Long.MAX_VALUE;
 		}
 		return System.currentTimeMillis() - start;
 	}
-	
+
 	public void runTest () {
 		int grade = 0;
 		List<String> list;
-		
+
 		list = new ArrayList<String>();
 		if (emptyInitialTest(list)) {
 			grade += 5;
@@ -126,7 +126,7 @@ public class Practice07Test {
 		} else {
 			System.out.println("[    ] Failed empty original container test (LinkedList)");
 		}
-		
+
 		list = new ArrayList<String>();
 		if (basicStoreRemoveTest(list)) {
 			grade += 10;
@@ -141,7 +141,7 @@ public class Practice07Test {
 		} else {
 			System.out.println("[    ] Failed basic store/remove test (LinkedList)");
 		}
-		
+
 		list = new ArrayList<String>();
 		if (storeManyTest(list)) {
 			grade += 20;
@@ -156,7 +156,7 @@ public class Practice07Test {
 		} else {
 			System.out.println("[    ] Failed multiple store/retrieve/remove test (LinkedList)");
 		}
-		
+
 		list = new ArrayList<String>();
 		if (increaseCapacityTest(list)) {
 			grade += 20;
@@ -164,7 +164,7 @@ public class Practice07Test {
 		} else {
 			System.out.println("[    ] Failed increase capacity test (ArrayList only)");
 		}
-		
+
 		List<Integer> timinglist = new ArrayList<Integer>();
 		long time = timingTest(timinglist);
 		if (time < 20) {
@@ -185,14 +185,14 @@ public class Practice07Test {
 		} else {
 			System.out.println("[    ] Failed timing test for LinkedList -- took " + time + "ms. (Should be less than 35ms.)");
 		}
-		
+
 		System.out.println("Grade for this assignment: " + grade + "%");
 	}
 
-	
+
 	public static void main(String[] args) {
 		Practice07Test test = new Practice07Test();
 		test.runTest();
 	}
-	
+
 }
